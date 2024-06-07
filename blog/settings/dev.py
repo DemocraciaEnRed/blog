@@ -8,6 +8,7 @@ SECRET_KEY = "django-insecure-7@ce-yhd$yhjar_7=sl+i26l0xaa=vi^j!@23vn2ez2dud1%41
 
 # SECURITY WARNING: define the correct hosts in production!
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://*.democraciaenred.org']
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
