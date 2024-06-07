@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<div class="w-full aspect-5/1 overflow-hidden">
+  {% srcset_image page.banner width-{400,800} class="w-full h-full object-cover" %}
+</div>
+<div class="py-20 container mx-auto text-white">
+  <h1 class="text-3xl text-white font-bold">{{ page.title }}</h1>
+  <p class="text-xl text-white my-4">Por {{ page.author }}</p>
+  <div class="text-xl">
+    {{ page.body|richtext }}
+  </div>
+<div>
+    <p>{{ page.date }}</p>
+</div>
+</div>
+
+  
+
+{% endblock content %}

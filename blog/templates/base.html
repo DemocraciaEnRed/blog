@@ -1,0 +1,176 @@
+{% load static wagtailcore_tags wagtailuserbar %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+            {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+            {% wagtail_site as current_site %}
+            {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
+            {% endblock %}
+        </title>
+        {% if page.search_description %}
+        <meta name="description" content="{{ page.search_description }}" />
+        {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {# Force all links in the live preview panel to be opened in a new tab #}
+        {% if request.in_preview_panel %}
+        <base target="_blank">
+        {% endif %}
+
+        {# Global stylesheets #}
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+          tailwind.config = {
+            theme: {
+                extend: {
+                  colors: {
+                    'orange': '#ff9b73',
+                    'pink': '#ff7990',
+                    'purple': '#bb86fc',
+                    'yellow': '#f7ec86',
+                    'green': '#69d69d',
+                    'blue': '#88cbff',
+                  },
+                  fontFamily: {
+                    sans: ['Lexend Deca', 'sans-serif'],
+                  },
+                },
+            }
+          }
+        </script>
+
+        {% block extra_css %}
+        {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+        
+    </head>
+
+    <body class="{% block body_class %}{% endblock %} bg-black">
+        <div class="">
+            <header class="bg-black inset-x-0 top-0 z-50">
+              <nav class="flex items-center justify-between py-2 px-2" aria-label="Global">
+                <div class="flex lg:flex-1">
+                  <a href="https://democraciaenred.org" class="">
+                    <span class="sr-only">Democracia en red</span>
+                    <img class="h-16 w-auto" src="https://democraciaenred.org/static/logo-der-c4a077e18777182dff1075dd9adc1546.png" alt="Democracia en Red">
+                  </a>
+                </div>
+                <div class="flex lg:hidden">
+                  <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="hidden py-2 pe-10 lg:flex lg:flex-1 lg:justify-end">
+                    <a href="https://democraciaenred.org/conocenos" class="hover:underline text-white py-2 text-xl mx-7">Conocenos</a>
+                    <a href="https://democraciaenred.org/recursos#resources" class="hover:underline text-white py-2 text-xl mx-7">Recursos</a>
+                    <a href="https://democraciaenred.org/transparencia" class="hover:underline text-white py-2 text-xl mx-7">Transparencia</a>
+                    <a href="https://democraciaenred.org/#ecosystem" class="hover:underline text-white py-2 text-xl mx-7">Ecosistema</a>
+                    <a href="https://democraciaenred.org/#press-slider" class="hover:underline text-white py-2 text-xl mx-7">Prensa</a>
+                    <a href="/" class="hover:underline text-white py-2 text-xl mx-7">Blog</a>
+                    <a href="#" class="hover:underline text-white text-xl border-2 rounded-full border-slate-300 py-2 px-6 mx-7">Contactanos</a>
+                    <a href="#" class="hover:underline text-white text-md mt-3 mx-5">ESP</a>
+                    <a href="#" class="hover:underline text-slate-500 text-md mt-3 mx-7">ENG</a>
+                </div>
+              </nav>
+
+
+
+
+
+
+
+
+              <!-- Mobile menu, show/hide based on menu open state. -->
+              <div class="lg:hidden" role="dialog" aria-modal="true">
+                <!-- Background backdrop, show/hide based on slide-over state. -->
+                <div class="fixed inset-0 z-50"></div>
+                <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-300 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                  <div class="flex items-center justify-between">
+                    <a href="/" class="-m-1.5 p-1.5">
+                      <span class="sr-only">Your Company</span>
+                      <img class="h-8 w-auto" src="https://democraciaenred.org/static/logo-der-c4a077e18777182dff1075dd9adc1546.png" alt="Democracia en Red">
+                    </a>
+                    <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                      <span class="sr-only">Close menu</span>
+                      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="mt-6 flow-root">
+                    <div class="-my-6 divide-y divide-gray-500/10">
+                      <div class="space-y-2 py-6">
+                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Product</a>
+                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
+                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Marketplace</a>
+                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
+                      </div>
+                      <div class="py-6">
+                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </header>
+            <script>
+              const btn = document.querySelector("button.mobile-menu-button");
+              const menu = document.querySelector(".mobile-menu");
+      
+              btn.addEventListener("click", () => {
+                  menu.classList.toggle("hidden");
+              });
+          </script>                  
+        
+          </div>
+        {% wagtailuserbar %}
+
+        {% block content %}{% endblock %}
+
+        {% block extra_js %}
+        {# Override this in templates to add extra javascript #}
+        {% endblock %}
+            <!-- Footer -->
+            <footer class="bg-black text-white pt-10 pb-28">
+              <div class="container mx-auto grid grid-cols-3 gap-4 mt-20">
+
+                <!-- Sección izquierda -->
+                <div>
+                  <img class="h-20 my-5 w-auto" src="https://democraciaenred.org/static/logo-der-c4a077e18777182dff1075dd9adc1546.png" alt="Democracia en Red">
+                  <p class="mb-4 w-2/4">Democracia en Red es una ONG latinoamericana de Buenos Aires, Argentina, para el mundo.</p>
+                  <hr class="border-gray-700 my-10">
+                  <p class="italic w-3/4">La tecnología avanza y cambia nuestras vidas. Es el momento del sistema político de abrirse al diálogo con la participación ciudadana.</p>
+                </div>
+                <!-- Sección central -->
+                <div class="text-2xl">
+                  <h3 class="font-bold mb-4">Secciones</h3>
+                  <ul>
+                    <li class="my-5"><a href="https://democraciaenred.org/conocenos" class="underline">Conocenos</a></li>
+                    <li class="my-5"><a href="https://democraciaenred.org/recursos#resources" class="underline">Recursos</a></li>
+                    <li class="my-5"><a href="https://democraciaenred.org/transparencia" class="underline">Transparencia</a></li>
+                    <li class="my-5"><a href="https://democraciaenred.org/#ecosystem" class="underline">Ecosistema</a></li>
+                    <li class="my-5"><a href="https://democraciaenred.org/#press-slider" class="underline">Prensa</a></li>
+                    <li class="my-5"><a href="/" class="underline">Blog</a></li>
+                  </ul>
+                </div>
+                <!-- Sección derecha -->
+                <div class="text-2xl">
+                  <h3 class="font-bold mb-4">Contacto</h3>
+                  <button class="text-white px-4 py-2 border-2 rounded-full border-slate-300 mb-4">Contactanos</button>
+                  <p class="text-slate-500">contacto@democraciaenred.org</p>
+                  <h3 class="font-bold mt-10 mb-2">Redes</h3>
+                </div>
+              </div>
+            </footer>   
+    </body>
+</html>

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <div class="relative bg-pink px-6 lg:px-8 py-13 sm:py-48 lg:py-13 ">
+        <div class="mx-auto max-w-2xl">
+          <div class="text-center">
+            <h1 class="text-4xl text-white font-bold tracking-tight text-gray-900 sm:text-6xl">BLOG</h1>
+          </div>
+        </div>
+      </div>
+      <section id="division" class="flex flex-wrap m-0">
+        <div class="flex-1 h-10 bg-orange"></div>
+        <div class="flex-1 h-10 bg-pink"></div>
+        <div class="flex-1 h-10 bg-purple"></div>
+        <div class="flex-1 h-10 bg-yellow"></div>
+        <div class="flex-1 h-10 bg-green"></div>
+        <div class="flex-1 h-10 bg-blue"></div>
+      </section>
+    
+    <div class="bg-black container mx-auto py-20">
+        <h1 class="text-5xl text-white mb-10 font-bold">{{ page.hero_cta }}</h1>
+        <div class="grid grid-flow-col grid-cols-3 gap-4">
+          {% for post in posts %}
+          <div class="px-5">
+
+            <div class="bg-white rounded-lg shadow-md">
+              <a href="{{post.get_url}}">
+                {% srcset_image post.banner width-{400,800} sizes="(max-width: 600px) 400px, 80vw" class="w-full h-40 object-cover rounded-t-lg" %}
+                <div class="p-4">
+                    <h3 class="text-gray-700 font-bold text-lg">{{post.author}}</h3>
+                    <p class="text-gray-500 text-sm">{{post.date}}</p>
+                    <h2 class="text-gray-900 font-semibold text-xl mt-2">{{post.title}}</h2>
+                    <p class="text-gray-600 text-sm mt-2">{{post.abstract}}</p>
+                    <button class="mt-4 py-2 px-4 bg-gray-300 text-gray-700 rounded-full text-sm">Metodología</button>
+                </div>
+              </a>
+              </div>
+          </div>
+
+
+          {% endfor %}
+
+        </div>
+    </div>
+
+
+{% endblock content %}
