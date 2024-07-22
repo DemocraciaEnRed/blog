@@ -275,3 +275,4 @@ media/
 .envs/*
 !.envs/.dev/
 *.sqlite3
+ddbb/

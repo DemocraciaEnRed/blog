@@ -22,6 +22,7 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
     libjpeg62-turbo-dev \
     zlib1g-dev \
     libwebp-dev \
+    netcat-openbsd \
  && rm -rf /var/lib/apt/lists/*
 
 # Install the application server.
@@ -47,6 +48,11 @@ USER wagtail
 
 # Collect static files.
 RUN python manage.py collectstatic --noinput --clear
+
+# Copia el archivo wait-for-mysql.sh al contenedor
+COPY --chown=wagtail:wagtail wait-for-mysql.sh /
+
+ENTRYPOINT ["/wait-for-mysql.sh"]
 
 # Runtime command that executes when "docker run" is called, it does the
 # following:
