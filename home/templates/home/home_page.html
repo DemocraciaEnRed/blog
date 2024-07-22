@@ -5,7 +5,8 @@
     <div class="relative bg-pink px-6 lg:px-8 py-13 sm:py-48 lg:py-13 ">
         <div class="mx-auto max-w-2xl">
           <div class="text-center">
-            <h1 class="text-4xl text-white font-bold tracking-tight text-gray-900 sm:text-6xl">BLOG</h1>
+            <h1 class="text-4xl text-white sm:text-4xl">Blog</h1>
+            <p class="text-xl mt-5 text-white tracking-tight">Rara rareza roia el roedor Ramiro Ramirez</p>
           </div>
         </div>
       </div>
@@ -20,9 +21,9 @@
     
     <div class="bg-black container mx-auto py-20">
         <h1 class="text-5xl text-white mb-10 font-bold">{{ page.hero_cta }}</h1>
-        <div class="grid grid-flow-col grid-cols-3 gap-4">
+        <div class="flex flex-wrap justify-center">
           {% for post in posts %}
-          <div class="px-5">
+          <div class="px-5 xl:w-1/3 md:w-1/2 sm:w-full">
 
             <div class="bg-white rounded-lg shadow-md">
               <a href="{{post.get_url}}">
