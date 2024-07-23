@@ -3,12 +3,12 @@
 
 {% block content %}
 <div class="w-full aspect-5/1 overflow-hidden">
-  {% srcset_image page.banner width-{400,800} class="w-full h-full object-cover" %}
+  {% srcset_image page.banner width-{400,800} class="w-full object-cover" style="height: 30vh!important" %}
 </div>
 <div class="py-20 container mx-auto text-white">
   <h1 class="text-3xl text-white font-bold">{{ page.title }}</h1>
   <p class="text-xl text-white my-4">Por {{ page.author }}</p>
-  <div class="text-xl">
+  <div class="">
     {{ page.body|richtext }}
   </div>
 <div>
