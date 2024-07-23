@@ -63,11 +63,11 @@
                   </a>
                 </div>
                 <div class="flex xl:hidden">
-                  <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                  <button onclick="toggleMobileMenu()" type="button" class="-m-2.5 pr-5 flex flex-col gap-2 items-center justify-center rounded-md p-2.5 text-white burger-menu">
                     <span class="sr-only">Open main menu</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
+                    <span class="block h-0.5 w-8 bg-white rounded-full"></span>
+                    <span class="block h-0.5 w-8 bg-white rounded-full"></span>
+                    <span class="block h-0.5 w-8 bg-white rounded-full"></span>
                   </button>
                 </div>
                 <div class="hidden py-1 pe-10 xl:flex xl:flex-1 xl:justify-end">
@@ -86,19 +86,54 @@
 
 
 
+              <!-- Mobile menu, show/hide based on menu open state. -->
+              <div id="mobile-menu" class="hidden">
+                <!-- Background backdrop, show/hide based on slide-over state. -->
+                <div class="fixed inset-0 z-50"></div>
+                <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-neutral-600 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                  <div class="flex items-center justify-between">
+                    <a href="/" class="-m-1.5 p-1.5">
+                      <img class="h-12 min-w-44 w-auto" src="https://democraciaenred.org/static/logo-der-c4a077e18777182dff1075dd9adc1546.png" alt="Democracia en Red">
+                    </a>
+                    <button onclick="toggleMobileMenu()" type="button" class="-m-2.5 rounded-md p-2.5 text-white">
+                      <span class="sr-only">Close menu</span>
+                      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="mt-6 flow-root">
+                    <div class="-my-6 divide-y divide-gray-500/10">
+                      <div class="space-y-2 py-6">
+                        
+                        <a href="https://democraciaenred.org/conocenos" class="-mx-3 block px-2 py-1.5 text-white hover:underline">Conocenos</a>
+                        <a href="https://democraciaenred.org/recursos#resources" class="-mx-3 block px-2 py-1.5 text-white hover:underline">Recursos</a>
+                        <a href="https://democraciaenred.org/transparencia" class="-mx-3 block px-2 py-1.5 text-white hover:underline">Transparencia</a>
+                        <a href="https://democraciaenred.org/#ecosystem" class="-mx-3 block px-2 py-1.5 text-white hover:underline">Ecosistema</a>
+                        <a href="https://democraciaenred.org/#press-slider" class="-mx-3 block px-2 py-1.5 text-white hover:underline">Prensa</a>
+                        <a href="/" class="-mx-3 block px-2 py-1.5 text-white hover:underline">Blog</a>                        
+                        <a href="#" class="-mx-3 hover:bg-white hover:text-black text-white border rounded-full px-5 border-slate-300 py-1.5">Contactanos</a>
 
+                        <div class="-mx-3">
+                          <a href="#" class="px-2 py-1.5 hover:underline text-slate-500 text-sm mt-3">ESP</a>
+                          <a href="#" class="px-2 py-1.5 hover:underline text-white text-sm mt-3">ENG</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
 
 
             </header>
             <script>
-              const btn = document.querySelector("button.mobile-menu-button");
-              const menu = document.querySelector(".mobile-menu");
-      
-              btn.addEventListener("click", () => {
-                  menu.classList.toggle("hidden");
-              });
-          </script>                  
+              function toggleMobileMenu() {
+                console.log("hla")
+                const menu = document.getElementById("mobile-menu");
+                menu.classList.toggle("hidden");
+              }
+            </script>                  
         
           </div>
         {% wagtailuserbar %}
