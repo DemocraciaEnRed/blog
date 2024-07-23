@@ -11,6 +11,9 @@ CSRF_TRUSTED_ORIGINS = ['https://*.democraciaenred.org']
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+# Configuración de almacenamiento estático y de medios
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Configuración de AWS S3 para DigitalOcean Spaces
 AWS_S3_FILE_OVERWRITE = False
@@ -23,12 +26,6 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 
-# Configuración de almacenamiento estático y de medios
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.{AWS_S3_ENDPOINT_URL}/{AWS_LOCATION}/static/'
-MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.{AWS_S3_ENDPOINT_URL}/{AWS_LOCATION}/media/'
 
 try:
     from .local import *
