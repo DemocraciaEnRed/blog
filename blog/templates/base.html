@@ -90,38 +90,6 @@
 
 
 
-
-              <!-- Mobile menu, show/hide based on menu open state. -->
-              <div class="xl:hidden" role="dialog" aria-modal="true">
-                <!-- Background backdrop, show/hide based on slide-over state. -->
-                <div class="fixed inset-0 z-50"></div>
-                <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-300 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                  <div class="flex items-center justify-between">
-                    <a href="/" class="-m-1.5 p-1.5">
-                      <img class="h-8" src="https://democraciaenred.org/static/logo-der-c4a077e18777182dff1075dd9adc1546.png" alt="Democracia en Red">
-                    </a>
-                    <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-                      <span class="sr-only">Close menu</span>
-                      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </button>
-                  </div>
-                  <div class="mt-6 flow-root">
-                    <div class="-my-6 divide-y divide-gray-500/10">
-                      <div class="space-y-2 py-6">
-                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Product</a>
-                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
-                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Marketplace</a>
-                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
-                      </div>
-                      <div class="py-6">
-                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </header>
             <script>
               const btn = document.querySelector("button.mobile-menu-button");
@@ -142,17 +110,17 @@
         {% endblock %}
             <!-- Footer -->
             <footer class="bg-black text-white pt-10 pb-28">
-              <div class="container mx-auto grid grid-cols-3 gap-4 mt-20">
+              <div class="container mx-auto flex flex-wrap mt-20">
 
                 <!-- Sección izquierda -->
-                <div>
+                <div class="sm:w-full lg:w-1/3 sm:px-10">
                   <img class="h-20 my-5 w-auto" src="https://democraciaenred.org/static/logo-der-c4a077e18777182dff1075dd9adc1546.png" alt="Democracia en Red">
                   <p class="mb-4 w-2/4">Democracia en Red es una ONG latinoamericana de Buenos Aires, Argentina, para el mundo.</p>
                   <hr class="border-gray-700 my-10">
                   <p class="italic w-3/4 text-sm">La tecnología avanza y cambia nuestras vidas. Es el momento del sistema político de abrirse al diálogo con la participación ciudadana.</p>
                 </div>
                 <!-- Sección central -->
-                <div class="text-lg mt-5 px-10">
+                <div class="sm:w-full lg:w-1/3 sm:px-10 text-md mt-5">
                   <h3 class="font-bold mb-4">Secciones</h3>
                   <ul>
                     <li class="mt-7 mb-5"><a href="https://democraciaenred.org/conocenos" class="underline">Conocenos</a></li>
@@ -164,7 +132,7 @@
                   </ul>
                 </div>
                 <!-- Sección derecha -->
-                <div class="text-lg mt-5">
+                <div class="sm:w-full lg:w-1/3 sm:px-10 text-md mt-5">
                   <h3 class="font-bold mb-4">Contacto</h3>
                   <button class="text-white px-4 py-2 mt-2 border rounded-full border-slate-300 mb-4">Contactanos</button>
                   <p class="text-gray-500">contacto@democraciaenred.org</p>
