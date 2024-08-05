@@ -1,14 +1,35 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
+{% block extra_css %}
+<style>
+  .richtext-image.right {
+    margin-right: 0;
+    margin-left: auto;
+  }
+  .richtext-image.full-width {
+    margin: auto
+  }  
+  .rich-text iframe {
+    margin: auto;
+    height: 50vh;
+    width: 50%;
+  }
+  .rich-text a {
+    text-decoration: underline;
+    color: aqua;
+  }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="w-full aspect-5/1 overflow-hidden">
   {% srcset_image page.banner width-{400,800} class="w-full object-cover" style="height: 30vh!important" %}
 </div>
-<div class="py-20 container mx-auto text-white">
+<div class="py-20 container w-8/12 mx-auto text-white">
   <h1 class="text-3xl text-white font-bold">{{ page.title }}</h1>
   <p class="text-xl text-white my-4">Por {{ page.author }}</p>
-  <div class="">
+  <div class="[&>p]:pb-3 rich-text">
     {{ page.body|richtext }}
   </div>
 <div>
