@@ -3,10 +3,12 @@
 
 {% block content %}
     <div class="relative bg-pink px-6 lg:px-8 py-13 sm:py-48 lg:py-13 ">
-        <div class="mx-auto max-w-2xl">
+        <div class="mx-auto max-w-3xl">
           <div class="text-center">
-            <h1 class="text-4xl text-white sm:text-4xl">Blog</h1>
-            <p class="text-xl mt-5 text-white tracking-tight">Rara rareza roia el roedor Ramiro Ramirez</p>
+            <h1 class="text-4xl text-white sm:text-4xl">Primera Asamblea Climática Argentina</h1>
+            <p class="text-xl mt-5 text-white tracking-tight">
+              Desde la iniciativa internacional <b>Resurgentes</b> y <b>Democracia en Red</b>, con el apoyo de la Municipalidad de General Pueyrredon, estamos llevando adelante la primera Asamblea Climática Argentina en Mar del Plata: un espacio donde personas ciudadanas elegidas al azar podrán discutir y decidir sobre temas importantes para enfrentar la crisis climática en su ciudad. 
+            </p>
           </div>
         </div>
       </div>
@@ -21,18 +23,17 @@
     
     <div class="bg-black container mx-auto py-20">
         <h1 class="text-5xl text-white mb-10 font-bold">{{ page.hero_cta }}</h1>
-        <div class="flex flex-wrap justify-center">
+        <div class="grid grid-cols-3 gap-4 justify-center">
           {% for post in posts %}
-          <div class="px-5 xl:w-1/3 md:w-1/2 sm:w-full mb-5">
+          <div class="px-5 mb-5">
 
             <div class="bg-white rounded-lg shadow-md">
               <a href="{{post.get_url}}">
                 {% srcset_image post.banner width-{400,800} sizes="(max-width: 600px) 400px, 80vw" class="w-full h-40 object-cover rounded-t-lg" %}
                 <div class="p-4">
-                    <h3 class="text-gray-700 font-bold text-lg">{{post.author}}</h3>
-                    <p class="text-gray-500 text-sm">{{post.date}}</p>
                     <h2 class="text-gray-900 font-semibold text-xl mt-2">{{post.title}}</h2>
-                    <p class="text-gray-600 text-sm mt-2">{{post.abstract}}</p>
+                    <h4 class="text-gray-700 font-bold text-md">{{post.author}}</h4>
+                    <p class="text-gray-500 text-sm">{{post.date}} - Tiempo estimado de lectura: {{post.get_estimated_reading_time}} min</p>
                     {% for tag in post.tags.all %}
                     <button class="mt-4 py-2 px-4 bg-gray-300 text-gray-700 rounded-full text-sm">{{tag}}</button>
                     {% endfor %}
