@@ -1,3 +1,5 @@
+import math
+
 from django.db import models
 
 from wagtail.models import Page
@@ -48,3 +50,9 @@ class PostPage(Page):
 
     parent_page_types = ['home.HomePage']
 
+
+    def get_estimated_reading_time(self):
+        word_count = len(self.body.split())
+        reading_speed = 200
+        estimated_time = math.ceil(word_count / reading_speed)
+        return estimated_time
