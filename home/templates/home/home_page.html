@@ -2,7 +2,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    <div class="relative bg-pink px-6 lg:px-8 py-13 sm:py-48 lg:py-13 ">
+    <div class="relative bg-pink px-6 lg:px-8 py-13 sm:py-48 lg:py-36 ">
         <div class="mx-auto max-w-3xl">
           <div class="text-center">
             <h1 class="text-4xl text-white pt-5">Primera Asamblea Climática Argentina</h1>
@@ -21,8 +21,8 @@
         <div class="flex-1 h-10 bg-blue"></div>
       </section>
     
-    <div class="bg-black container mx-auto py-5">
-        <h1 class="px-3 text-3xl text-white mb-10 font-bold">{{ page.hero_cta }}</h1>
+    <div class="bg-black container mx-auto py-7">
+        <h1 class="text-center text-3xl text-white mb-10 font-bold">{{ page.hero_cta }}</h1>
         <div class="grid lg:grid-cols-3 gap-4 justify-center">
           {% for post in posts %}
           <div class="px-5 mb-5 h-full">
