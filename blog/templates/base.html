@@ -4,6 +4,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />        
+        <link rel="shortcut icon" href='https://democraciaenred.org/static/favicon-357977cd65b7e580e7608c32c305710f.png'>
         <title>
             {% block title %}
             {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
@@ -13,10 +15,26 @@
             {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
             {% endblock %}
         </title>
+        <meta name="title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}" />
+        <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}" />
+        <meta property="twitter:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}" />
+
         {% if page.search_description %}
         <meta name="description" content="{{ page.search_description }}" />
+        <meta property="og:description" content="{{ page.search_description }}" />
+        <meta property="twitter:description" content="{{ page.search_description }}" />
         {% endif %}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://blog.democraciaenred.org" />
+        <meta property="og:image" content="https://democraciaenred.org/static/logo-der-c4a077e18777182dff1075dd9adc1546.png" />
+
+        <!-- Twitter -->
+        <meta property="twitter:url" content="https://blog.democraciaenred.org" />
+        <meta property="twitter:image" content="https://democraciaenred.org/static/logo-der-c4a077e18777182dff1075dd9adc1546.png" />
+
 
         {# Force all links in the live preview panel to be opened in a new tab #}
         {% if request.in_preview_panel %}
@@ -25,6 +43,7 @@
 
         {# Global stylesheets #}
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" />      
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
           tailwind.config = {
@@ -52,7 +71,7 @@
         
     </head>
 
-    <body class="{% block body_class %}{% endblock %} bg-black">
+    <body class="{% block body_class %}bg-black{% endblock %}">
         <div class="">
             <header class="bg-black inset-x-0 top-0 z-50">
               <nav class="flex items-center justify-between py-2 px-2" aria-label="Global">
@@ -172,6 +191,62 @@
                   <button class="text-white px-4 py-2 mt-2 border rounded-full border-slate-300 mb-4">Contactanos</button>
                   <p class="text-gray-500">contacto@democraciaenred.org</p>
                   <p class="font-bold mt-10 mb-2">Redes</p>
+                  <div class="flex justify-between">
+                    <a 
+                    class="mt-1 p-3"
+                    href="https://www.linkedin.com/company/democracia-en-red/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Linkedin"
+                    > 
+                      <i class="bi-linkedin"></i>
+                    </a>
+                    <a 
+                    class="mt-1 p-3"
+                    href="https://twitter.com/fundacionDER"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter"
+                    > 
+                      <i class="bi-twitter"></i>
+                    </a>
+                    <a 
+                    class="mt-1 p-3"
+                    href="https://www.instagram.com/democraciaenred/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    > 
+                      <i class="bi-instagram"></i>
+                    </a>
+                    <a 
+                    class="mt-1 p-3"
+                    href="https://github.com/democraciaenred"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Github"
+                    > 
+                      <i class="bi-github"></i>
+                    </a>
+                    <a 
+                    class="mt-1 p-3"
+                    href="https://www.youtube.com/channel/UCm5n0zxmfWN0pMuMPxk7psw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Youtube"
+                    > 
+                      <i class="bi-youtube"></i>
+                    </a>
+                    <a 
+                    class="mt-1 p-3"
+                    href="https://medium.com/@fundaciondemocraciaenred"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Medium"
+                    > 
+                      <i class="bi-medium"></i>
+                    </a>
+                  </div>                  
                 </div>
               </div>
             </footer>   
