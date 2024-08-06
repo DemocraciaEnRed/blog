@@ -21,22 +21,27 @@
         <div class="flex-1 h-10 bg-blue"></div>
       </section>
     
-    <div class="bg-black container mx-auto py-20">
+    <div class="bg-black container mx-auto py-5">
         <h1 class="text-5xl text-white mb-10 font-bold">{{ page.hero_cta }}</h1>
-        <div class="grid grid-cols-3 gap-4 justify-center">
+        <div class="grid lg:grid-cols-3 gap-4 justify-center">
           {% for post in posts %}
-          <div class="px-5 mb-5">
+          <div class="px-5 mb-5 h-full">
 
-            <div class="bg-white rounded-lg shadow-md">
-              <a href="{{post.get_url}}">
+            <div class="bg-white rounded-lg shadow-md h-full">
+              <a href="{{post.get_url}}" class="flex flex-col h-full">
                 {% srcset_image post.banner width-{400,800} sizes="(max-width: 600px) 400px, 80vw" class="w-full h-40 object-cover rounded-t-lg" %}
-                <div class="p-4">
-                    <h2 class="text-gray-900 font-semibold text-xl mt-2">{{post.title}}</h2>
-                    <h4 class="text-gray-700 font-bold text-md">{{post.author}}</h4>
-                    <p class="text-gray-500 text-sm">{{post.date}} - Tiempo estimado de lectura: {{post.get_estimated_reading_time}} min</p>
-                    {% for tag in post.tags.all %}
-                    <button class="mt-4 py-2 px-4 bg-gray-300 text-gray-700 rounded-full text-sm">{{tag}}</button>
-                    {% endfor %}
+                <div class="p-4 flex flex-col justify-between flex-1">
+                  <div>
+                    <p class="mb-3">
+                      {% for tag in post.tags.all %}
+                        <span class="mr-1 py-1 px-2 bg-yellow text-black rounded-full text-xs">{{tag}}</span>
+                      {% endfor %}
+                    </p>
+                      <p class="text-gray-900 font-bold text-xl my-1">{{post.title}}</p>
+                      <p class="text-gray-700 font-semibold text-md my-1">{{post.author}}</p>
+                  </div>
+                  <p class="text-gray-500 text-sm my-1">{{post.date}} - Tiempo estimado de lectura: {{post.get_estimated_reading_time}} min</p>
+
                 </div>
               </a>
               </div>
