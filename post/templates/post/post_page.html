@@ -19,6 +19,9 @@
     text-decoration: underline;
     color: blue;
   }
+  .reset *:not(p) {
+    all: revert!important;
+  }  
 </style>
 {% endblock %}
 
@@ -26,14 +29,14 @@
 
 {% block content %}
 <div class="w-full aspect-5/1 overflow-hidden">
-  {% srcset_image page.banner width-{400,800} class="w-full object-cover" style="height: 30vh!important" %}
+  {% srcset_image page.banner width-{400,2000} class="w-full object-cover" style="height: 50vh!important" %}
 </div>
 
 <div class="container px-3 mx-auto flex flex-row flex-wrap lg:justify-center py-20">
   <div class=" lg:w-8/12">
     <h1 class="text-3xl  font-bold">{{ page.title }}</h1>
     <p class="text-xl  my-4">Por {{ page.author }}</p>
-    <div class="[&>p]:pb-3 rich-text text-justify">{{ page.body|richtext }}</div>
+    <div class="[&>p]:pb-3 rich-text text-justify reset" id="note-body">{{ page.body|richtext }}</div>
       <p class="text-md text-center mt-4 mb-2">Compartí esta nota en:</p>
       <div class="flex justify-center">
         <a 
@@ -65,9 +68,12 @@
         </a>
       </div>
       <script>
+        //////////////////////////////////
+        ///// Incorporación Texto para Redes
+        //////////////////////////////////
+
         // Obtener la URL actual
         var currentUrl = window.location.href;
-      
         // Construir el enlace de WhatsApp con la URL actual
         var whatsappLink = "https://api.whatsapp.com/send?text=¡Hola! Te comparto esta nota súper interesante de Democracia en Red 👇%0A%0A" + encodeURIComponent(currentUrl);
         // Asignar el enlace construido al atributo href del elemento a
@@ -80,8 +86,22 @@
         var linkedinLink = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(currentUrl);
         // Asignar el enlace construido al atributo href del elemento a
         document.getElementById("linkedin-share").href = linkedinLink;        
+      </script>      
+      <script>
+        //////////////////////////////////
+        ///// Agregado target="_blank" a elementos "a"
+        //////////////////////////////////
+
+        // Selecciona todos los enlaces dentro del contenedor #note-body
+        const links = document.querySelectorAll('#note-body a');
+
+        // Itera sobre cada enlace y le agrega el atributo target="_blank"
+        links.forEach(link => {
+            link.setAttribute('target', '_blank');
+        });
       
       </script>      
+
       <div class="flex justify-center">
         <a 
           class="mt-8 p-3 border"
