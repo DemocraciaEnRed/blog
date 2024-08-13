@@ -2,24 +2,22 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    <div class="relative bg-pink px-6 lg:px-8 py-13 sm:py-48 lg:py-36 ">
-        <div class="mx-auto max-w-3xl">
-          <div class="text-center">
-            <h1 class="text-4xl text-white pt-5">Primera Asamblea Climática Argentina</h1>
-            <p class="text-md mt-5 py-5 text-white tracking-tight">
-              Desde la iniciativa internacional <b>Resurgentes</b> y <b>Democracia en Red</b>, con el apoyo de la Municipalidad de General Pueyrredon, estamos llevando adelante la primera Asamblea Climática Argentina en Mar del Plata: un espacio donde personas ciudadanas elegidas al azar podrán discutir y decidir sobre temas importantes para enfrentar la crisis climática en su ciudad. 
-            </p>
-          </div>
-        </div>
-      </div>
-      <section id="division" class="flex flex-wrap m-0">
-        <div class="flex-1 h-10 bg-orange"></div>
-        <div class="flex-1 h-10 bg-pink"></div>
-        <div class="flex-1 h-10 bg-purple"></div>
-        <div class="flex-1 h-10 bg-yellow"></div>
-        <div class="flex-1 h-10 bg-green"></div>
-        <div class="flex-1 h-10 bg-blue"></div>
-      </section>
+  
+    <div class="w-full overflow-hidden hidden md:block">
+      {% srcset_image page.banner width-{400,2000} class="w-full object-cover" style="height: 75vh!important" %}
+    </div>
+    <div class="w-full overflow-hidden block md:hidden">
+      {% srcset_image page.banner_sm width-{200,2000} class="w-full object-cover" %}
+    </div>    
+
+    <section id="division" class="flex flex-wrap m-0">
+      <div class="flex-1 h-10 bg-orange"></div>
+      <div class="flex-1 h-10 bg-pink"></div>
+      <div class="flex-1 h-10 bg-purple"></div>
+      <div class="flex-1 h-10 bg-yellow"></div>
+      <div class="flex-1 h-10 bg-green"></div>
+      <div class="flex-1 h-10 bg-blue"></div>
+    </section>
     
     <div class="bg-black container mx-auto py-7">
         <h1 class="text-center text-3xl text-white mb-10 font-bold">{{ page.hero_cta }}</h1>

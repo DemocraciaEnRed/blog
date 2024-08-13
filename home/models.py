@@ -11,6 +11,25 @@ from post.models import PostPage
 
 class HomePage(Page):
 
+    banner = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        verbose_name="Banner Home",
+        help_text="Banner para mostrar al inicio del blog",
+    )
+    banner_sm = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        verbose_name="Banner Home SM",
+        help_text="Banner para mostrar al inicio del blog en tamaño mobile",
+    )    
+
     hero_cta = models.CharField(
         blank=True,
         verbose_name="Hero CTA",
@@ -22,6 +41,8 @@ class HomePage(Page):
 
     # modify your content_panels:
     content_panels = Page.content_panels + [
+        FieldPanel('banner'),  
+        FieldPanel('banner_sm'),        
         FieldPanel("hero_cta"),
     ]
 
