@@ -22,7 +22,7 @@
     <div class="bg-black container mx-auto py-7">
         <h1 class="text-center text-3xl text-white mb-10 font-bold">{{ page.hero_cta }}</h1>
         <div class="grid lg:grid-cols-3 gap-4 justify-center">
-          {% for post in posts %}
+          {% for post in posts reversed %}
           <div class="px-5 mb-5 h-full">
 
             <div class="bg-white rounded-lg shadow-md h-full">
