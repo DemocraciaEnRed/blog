@@ -276,3 +276,5 @@ media/
 !.envs/.dev/
 *.sqlite3
 ddbb/
+# Override de settings para desarrollo local (venv + SQLite)
+blog/settings/local.py

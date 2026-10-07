@@ -14,6 +14,14 @@ EXPOSE 8000
 ENV PYTHONUNBUFFERED=1 \
     PORT=8000
 
+# Debian Buster is EOL; point apt at the archive mirror instead of the
+# now-404ing deb.debian.org/security.debian.org.
+RUN sed -i \
+    -e 's|deb.debian.org|archive.debian.org|g' \
+    -e 's|security.debian.org|archive.debian.org|g' \
+    -e '/buster-updates/d' \
+    /etc/apt/sources.list
+
 # Install system packages required by Wagtail and Django.
 RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-recommends \
     build-essential \
